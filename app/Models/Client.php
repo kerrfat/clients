@@ -19,4 +19,8 @@ class Client extends Model
     {
         return $this->hasMany(Account::class);
     }
+    public function uscisCases()
+{
+    return $this->hasMany(UscisCase::class);
+}
 }

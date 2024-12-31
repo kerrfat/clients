@@ -55,8 +55,12 @@ class ClientResource extends Resource
             Tables\Actions\Action::make('View Accounts')
                     ->url(fn (Client $record) => route('filament.admin.resources.accounts.index', ['record' => $record->id]))
                     ->icon('heroicon-o-eye'),
-            
+                    Tables\Actions\Action::make('View USCIS Cases')
+                    ->url(fn (Client $record) => route('filament.admin.resources..uscis-cases.index', ['record' => $record->id]))
+                    ->icon('heroicon-o-eye'),
         ])
+        
+
         ->filters([
             Tables\Filters\Filter::make('Created Today')
                 ->query(fn ($query) => $query->whereDate('created_at', now()->toDateString())),
@@ -92,6 +96,7 @@ class ClientResource extends Resource
     {
         return [
               \App\Filament\Resources\ClientResource\RelationManagers\AccountsRelationManager::class,
+              \App\Filament\Resources\ClientResource\RelationManagers\UscisCasesRelationManager::class,
         ];
     }
 
