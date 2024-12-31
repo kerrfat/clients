@@ -19,6 +19,8 @@ class ClientResource extends Resource
 {
     protected static ?string $model = Client::class;
     protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $navigationGroup = 'Client Management';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Forms\Form $form): Forms\Form
     {
@@ -56,7 +58,7 @@ class ClientResource extends Resource
                     ->url(fn (Client $record) => route('filament.admin.resources.accounts.index', ['record' => $record->id]))
                     ->icon('heroicon-o-eye'),
                     Tables\Actions\Action::make('View USCIS Cases')
-                    ->url(fn (Client $record) => route('filament.admin.resources..uscis-cases.index', ['record' => $record->id]))
+                    ->url(fn (Client $record) => route('filament.admin.resources.uscis-cases.index', ['record' => $record->id]))
                     ->icon('heroicon-o-eye'),
         ])
         
